@@ -1,0 +1,272 @@
+/*
+================================================================================================================= 
+HOME PAGE
+=================================================================================================================*/
+.intro-content{
+    position: relative;
+    /*top: -7rem;*/
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--gap);
+    min-height: 100vh;
+}
+
+.intro-text-content, .intro-img{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+.intro-text-content h2{
+    font-size: 5.5rem;
+    margin-bottom: 5rem;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.intro-img img{
+    max-width: 100%;
+    height: auto;
+}
+
+/*
+================================================================================================================= 
+TOP3 PAGE
+=================================================================================================================*/
+
+.top3-content{
+    display: flex;
+    /*flex-flow:column wrap;*/
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-height: 100vh;
+    justify-content: center;
+
+    max-width: 64rem;
+    text-align: center;
+}
+
+/*
+================================================================================================================= 
+GRID JOBS PAGE
+=================================================================================================================*/
+
+.grid-content{
+    min-height : 100vh;
+    display: flex;
+    flex-flow:column wrap;
+    justify-content: center;
+
+}
+.grid-heading{
+    margin-bottom: 1rem ;
+}
+.grid-description{
+    padding-bottom: 5rem;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: var(--gap);
+    /*criando um contador para os valores do h3::before*/
+    counter-reset: counter;
+}
+
+.grid h3{
+    font-size: 3rem;
+    position: relative;
+    padding-left: 5rem;
+    padding-bottom: 2rem;
+
+} 
+
+.grid h3::before {
+    counter-increment: counter;
+    content: counter(counter);
+    position: absolute;
+    font-size: 8rem;
+    font-style: italic;
+     top: -4rem;
+     left: -2rem;
+     transform: rotate(5deg);
+}
+/*
+================================================================================================================= 
+GALLERY PAGE
+=================================================================================================================*/
+
+.gallery-img{
+    width: 100%;
+    max-width: 36rem;
+    max-height: 36rem;
+    overflow: hidden;
+}
+
+.gallery-img img{
+    transition: all 300ms ease-in-out;
+} 
+
+.gallery-img img:hover{
+    transform: translate(-3%,3%) scale(1.2) rotate(5deg);
+}
+/*
+================================================================================================================= 
+TABLE PAGE
+=================================================================================================================*/
+
+.responsive-table{
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+/*
+================================================================================================================= 
+CONTACT US PAGE
+=================================================================================================================*/
+
+.form{
+    grid-column: span 2;
+}
+
+.form .form-grid{
+    border: none;
+    display: flex;
+    flex-flow:  row wrap;
+    gap: var(--gap);
+} 
+
+.form-grid legend{
+    font-style: italic;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.form-group{
+    flex: 1 1 32rem;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 1rem;
+}
+.form-group input,.form-group textarea{
+    border: none;
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    font-size: 3rem;
+}
+.form-group input:focus,.form-group textarea:focus{
+    box-shadow: 0 0 10px 2px crimson;
+}
+
+.form-group button{
+    border: 0.5rem solid #fff;
+    background: none;
+    color: #fff;
+    padding: 1.5rem 2rem;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+.form-group button:hover{
+    background-color: #fff;
+    color: var(--primary-color);
+}
+
+.footer{
+    text-align: center;
+    font-size: 1.6rem;
+}
+.footer p{
+    margin: 0;
+    padding: 3rem;
+}
+.close-menu{
+ display: none;
+}
+.back-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var( --color-white);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: var(--primary-color);
+    transform: rotate(-93deg);
+    border: 0.1rem solid var(--primary-color);
+  }
+/*
+================================================================================================================= 
+MEDIA QUERIES 
+=================================================================================================================*/
+@media (max-width:800px){
+    .intro-content,.grid{
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-img{
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .gallery-img img{
+        width: 100%;
+    }
+
+    .grid-content{ 
+        display: block;
+    }
+    /* menu mobile*/
+    .menu{
+        bottom: 0;
+        text-align: center;
+    }
+    .menu-content, .menu-content ul{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .menu-content{
+        height: 100vh;
+    }
+    .menu{
+        display: none;
+    }
+    .close-menu-label::after {
+        position: fixed;
+        content: '☰';
+        z-index: 2;
+        top: 2rem;
+        right: 2rem;
+        background: var(--primary-color);
+        color: var( --color-white);
+        font-size: 3rem;
+        line-height: 3rem;
+        width: 3rem;
+        height: 3rem;
+        text-align: center;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+
+    .close-menu:checked~.menu{
+        display: block;
+    }
+    .close-menu:checked~.close-menu-label::after{
+        content: '×';
+    }
+    .menu-space{
+        display: none;
+    }
+}
+
+@media (max-width:400px){
+    h2{
+        font-size:  4.5rem;
+    }
+}
